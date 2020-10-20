@@ -1,0 +1,47 @@
+.documentation
+  padding: 135px 0 88px
+
+.documentation__row
+  display: flex
+  margin-top: 56px
+  max-height: 800px
+
+.sidebar
+  width: 287px
+  padding: 32px 24px 32px 64px
+  background: #F5F5F5
+
+.sidebar__item + .sidebar__item
+  margin-top: 16px
+
+.sidebar__button
+  font-size: 24px
+  line-height: 31px
+  color: #212121
+
+.sidebar__button.active
+  position: relative
+  font-weight: bold
+
+.sidebar__button.active::before
+  content: ''
+  position: absolute
+  top: 1px
+  left: -10px
+  transform: translateX(-100%)
+  width: 30px
+  height: 30px
+  background: url('../img/slash.svg') center no-repeat
+  background-size: contain
+
+.documentation__content
+  width: 100%
+  padding: 24px 66px 24px 42px
+  border: 1px solid #EEEEEE
+  overflow-y: auto
+
+.documentation__text
+  margin: 16px 0
+  font-size: 16px
+  line-height: 21px
+  color: #616161

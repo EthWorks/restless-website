@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Restless</title>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+			<div class="header__top">
+				<img src="./img/restless.svg" alt="restless">
+				<img src="./img/github.svg" alt="github">
+			</div>
+			<div class="hero">
+				<img class="hero__img" src="./img/restless-text.svg" alt="restless">
+				<p class="hero__subtitle">make TypeScript type <b>safe again</b></p>
+			</div>
+		</div>
+	</header>
+	<main>
+		<section class="features">
+			<div class="container">
+				<h2 class="section-title">features</h2>
+				<ul class="features-list">
+					<li class="features-list__item">Syntax so easy that <b>your grandma will get it</b></li>
+					<li class="features-list__item">Takes whatever returns what you need</li>
+					<li class="features-list__item">First class <b>Express.js support</b></li>
+					<li class="features-list__item"><b>Built in utilities</b> for Ethereum</li>
+				</ul>
+			</div>
+		</section>
+		<section class="examples">
+			<div class="container">
+				<h2 class="section-title">examples</h2>
+				<ul class="examples-list">
+					<li class="examples-list__item">
+						<p class="small-title">This is the basic thing</p>
+						<pre>
+							<code class="javascript">
+cast(123, asNumber) // returns 123 
+cast('foo', asNumber) // throws error
+							</code>
+						</pre>
+					</li>
+					<li class="examples-list__item">
+						<p class="small-title">But you can compose the <b>Sanitizers</b></p>
+						<pre>
+							<code class="javascript">
+const asEmployee = asObject({
+  name: asString,
+  salary: asNumber,
+  projects: asArray(asString),
+})
+const json = await get('https://myapi.com/employees/2137')
+const myGuy = cast(json, asEmployee)
+							</code>
+						</pre>
+					</li>
+					<li class="examples-list__item">
+						<p class="small-title">And use it with Express.js</p>
+						<pre>
+							<code class="javascript">
+app.get('/foo/:n/:s', asyncHandler(
+  sanitize({
+    n: asNumber,
+    s: asString
+  }),
+  // n and s will have compile time inferred types of number and string
+  ({ n, s }) => responseOf(`You sent ${n} and "${s}"`)
+))
+							</code>
+						</pre>
+						<pre>
+							<code class="plaintext">
+GET /foo/42/answer -> 200: You sent 42 and "answer"
+GET /foo/bar/answer -> 400: [{ path: 'params.n', expected: 'number' }]
+							</code>
+						</pre>
+					</li>
+					<li class="examples-list__item">
+						<p class="small-title">Or with Ethereum</p>
+						<pre>
+							<code class="javascript">
+cast('0xA5fE...f213', asEthAddress) // returns '0xA5fE...f213'
+cast('whatever', asEthAddress) // throws error
+							</code>
+						</pre>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="installation">
+			<div class="container">
+				<h2 class="installation__title section-title">installation</h2>
+				<div class="installation__row">
+					<div class="tabsn">
+						<button class="tabs__button js-installation-btn tabs__button--light active" data-target="sanitizers">sanitizers</button>
+						<button class="tabs__button js-installation-btn tabs__button--light" data-target="ethereum">ethereum</button>
+						<button class="tabs__button js-installation-btn tabs__button--light" data-target="express">express.js</button>
+					</div>
+					<div class="package-managers">
+						<button class="package-managers__button js-package-btn active" data-target="npm">npm</button>
+						<button class="package-managers__button js-package-btn" data-target="yarn">yarn</button>
+					</div>
+				</div>
+				<div class="installation__content" id="yarn-content">
+					<pre class="installation__code">
+						<code class="plaintext">
+yarn add @restless/restless
+						</code>
+					</pre>
+				</div>
+				<div class="installation__content visible" id="npm-content">
+					<pre class="installation__code">
+						<code class="plaintext">
+npm install @restless/sanitizers
+						</code>
+					</pre>
+				</div>
+			</div>
+		</section>
+		<section class="documentation">
+			<div class="container">
+				<h2 class="section-title">documentation</h2>
+				<div class="tabs tabs--center">
+					<button class="tabs__button active">sanitizers</button>
+					<button class="tabs__button">ethereum</button>
+					<button class="tabs__button">express.js</button>
+				</div>
+				<div class="documentation__row">
+					<ul class="sidebar">
+						<li class="sidebar__item">
+							<button class="sidebar__button active">cast</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">castOr</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asString.js</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asNumber</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asInteger</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asBoolean</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asMatching</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asObject</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asArray</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asOptional</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asExactly</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asChecked</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asMapped</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asFlatMapped</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">asAnyOf</button>
+						</li>
+						<li class="sidebar__item">
+							<button class="sidebar__button">withErrorMessage</button>
+						</li>
+					</ul>
+					<div class="documentation__content">
+						<div class="documentation__item">
+							<p class="small-title">cast</p>
+							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+							<pre>
+								<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+								</code>
+							</pre>
+						</div>
+						<div class="documentation__item">
+							<p class="small-title">castOr</p>
+							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+							<pre>
+								<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+								</code>
+							</pre>
+						</div>
+						<div class="documentation__item">
+							<p class="small-title">asString.js</p>
+							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+							<pre>
+								<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+								</code>
+							</pre>
+						</div>
+						<div class="documentation__item">
+							<p class="small-title">asString.js</p>
+							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+							<pre>
+								<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+								</code>
+							</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer__row">
+				<p class="footer__text">Copyrights 2020.</p>
+				<img src="./img/restless-logo.svg" alt="restless logo">
+				<img src="./img/github-logo.svg" alt="github logo">
+			</div>
+		</div>
+	</footer>
+
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/monokai-sublime.min.css">
+	<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+.header
+  position: relative
+  padding: 25px 0 0
+
+  +media(m, 90px)
+    padding: 16px 0 0
+  
+.header::after
+  content: ''
+  position: absolute
+  top: 0
+  right: 27%
+  width: 137px
+  height: 137px
+  background: url('./../../img/square.svg') center no-repeat
+  background-size: contain
+  z-index: -1
+  
+  +media(m, 90px)
+    right: 44px
+  
+.header__top
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.hero
+  position: relative
+  padding-top: 182px
+  text-align: center
+  
+  +media(m, 90px)
+    padding: 193px 0 0
+  
+.hero::after
+  content: ''
+  position: absolute
+  bottom: 10%
+  right: 58px
+  width: 137px
+  height: 137px
+  background: url('./../../img/square.svg') center no-repeat
+  background-size: contain
+  z-index: -1
+
+  +media(m, 90px)
+    bottom: 0
+    right: 11px
+    transform: translateY(100%)
+
+.hero__img
+  max-width: 100%
+
+.hero__subtitle
+  max-width: 558px
+  margin: 72px auto 0 
+  font-size: 56px
+  line-height: 73px
+  text-align: center
+  color: #212121
+
+  +media(m, 90px)
+    margin: 40px auto 0 
