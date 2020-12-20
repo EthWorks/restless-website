@@ -86,7 +86,7 @@ button, a {
   color: #CB000C; }
   @media (max-width: 990px) {
     .section-title {
-      margin-bottom: 64px; } }
+      margin-bottom: 72px; } }
 
 code.hljs {
   padding: 8px 24px; }
@@ -95,6 +95,9 @@ code.hljs {
   font-size: 24px;
   line-height: 31px;
   color: #212121; }
+
+.hidden {
+  display: none; }
 
 .header {
   position: relative;
@@ -177,7 +180,7 @@ code.hljs {
           background-size: cover; }
   @media (max-width: 990px) {
     .features {
-      padding: 365px 0 173px; } }
+      padding: 458px 0 173px; } }
 
 .features-list {
   display: -webkit-box;
@@ -234,7 +237,7 @@ code.hljs {
   padding: 24px 0 110px; }
   @media (max-width: 990px) {
     .examples {
-      padding: 55px 0 120px; } }
+      padding: 0 0 120px; } }
 
 .examples-list {
   max-width: 754px;
@@ -370,18 +373,15 @@ code.hljs {
 .package-managers__button + .package-managers__button {
   margin-left: 16px; }
 
-.installation__content {
-  display: none; }
-
-.installation__content.visible {
-  display: block; }
-
 .installation__code {
   max-width: 706px;
   margin: 72px auto 0; }
 
 .documentation {
   padding: 135px 0 88px; }
+  @media (max-width: 990px) {
+    .documentation {
+      padding: 136px 0 118px; } }
 
 .documentation__row {
   display: -webkit-box;

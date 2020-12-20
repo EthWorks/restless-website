@@ -98,28 +98,62 @@ cast('whatever', asEthAddress) // throws error
 				<h2 class="installation__title section-title">installation</h2>
 				<div class="installation__row">
 					<div class="tabsn">
-						<button class="tabs__button js-installation-btn tabs__button--light active" data-target="sanitizers">sanitizers</button>
-						<button class="tabs__button js-installation-btn tabs__button--light" data-target="ethereum">ethereum</button>
-						<button class="tabs__button js-installation-btn tabs__button--light" data-target="express">express.js</button>
+						<button class="js-tab-btn tabs__button js-installation-btn tabs__button--light active" data-name="installation" data-target="sanitizers">sanitizers</button>
+						<button class="js-tab-btn tabs__button js-installation-btn tabs__button--light" data-name="installation" data-target="ethereum">ethereum</button>
+						<button class="js-tab-btn tabs__button js-installation-btn tabs__button--light" data-name="installation" data-target="express">express.js</button>
 					</div>
 					<div class="package-managers">
-						<button class="package-managers__button js-package-btn active" data-target="npm">npm</button>
-						<button class="package-managers__button js-package-btn" data-target="yarn">yarn</button>
+						<button class="js-tab-btn package-managers__button js-package-btn active" data-name="package-managers" data-target="npm">npm</button>
+						<button class="js-tab-btn package-managers__button js-package-btn" data-name="package-managers" data-target="yarn">yarn</button>
 					</div>
 				</div>
-				<div class="installation__content" id="yarn-content">
-					<pre class="installation__code">
-						<code class="plaintext">
-yarn add @restless/restless
-						</code>
-					</pre>
+				<div class="hidden" data-id="ethereum" data-group="installation">
+					<div class="hidden" data-group="package-managers" data-id="yarn">
+						<pre class="installation__code">
+							<code class="plaintext">
+yarn add @restless/ethereum
+							</code>
+						</pre>
+					</div>
+					<div data-group="package-managers" data-id="npm">
+						<pre class="installation__code">
+							<code class="plaintext">
+npm install @restless/ethereum
+							</code>
+						</pre>
+					</div>
 				</div>
-				<div class="installation__content visible" id="npm-content">
-					<pre class="installation__code">
-						<code class="plaintext">
+				<div class="hidden" data-id="express" data-group="installation">
+					<div class="hidden" data-group="package-managers" data-id="yarn">
+						<pre class="installation__code">
+							<code class="plaintext">
+yarn add @restless/restless
+							</code>
+						</pre>
+					</div>
+					<div data-group="package-managers" data-id="npm">
+						<pre class="installation__code">
+							<code class="plaintext">
+npm install @restless/restless
+							</code>
+						</pre>
+					</div>
+				</div>
+				<div data-id="sanitizers" data-group="installation">
+					<div class="hidden" data-group="package-managers" data-id="yarn">
+						<pre class="installation__code">
+							<code class="plaintext">
+yarn add @restless/sanitizers
+							</code>
+						</pre>
+					</div>
+					<div data-group="package-managers" data-id="npm">
+						<pre class="installation__code">
+							<code class="plaintext">
 npm install @restless/sanitizers
-						</code>
-					</pre>
+							</code>
+						</pre>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -127,105 +161,260 @@ npm install @restless/sanitizers
 			<div class="container">
 				<h2 class="section-title">documentation</h2>
 				<div class="tabs tabs--center">
-					<button class="tabs__button active">sanitizers</button>
-					<button class="tabs__button">ethereum</button>
-					<button class="tabs__button">express.js</button>
+					<button class="js-tab-btn tabs__button active" data-name="documentation" data-target="sanitizers-docs">sanitizers</button>
+					<button class="js-tab-btn tabs__button" data-name="documentation" data-target="ethereum-docs">ethereum</button>
+					<button class="js-tab-btn tabs__button" data-name="documentation" data-target="express-docs">express.js</button>
 				</div>
-				<div class="documentation__row">
-					<ul class="sidebar">
-						<li class="sidebar__item">
-							<button class="sidebar__button active">cast</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">castOr</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asString.js</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asNumber</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asInteger</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asBoolean</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asMatching</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asObject</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asArray</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asOptional</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asExactly</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asChecked</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asMapped</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asFlatMapped</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">asAnyOf</button>
-						</li>
-						<li class="sidebar__item">
-							<button class="sidebar__button">withErrorMessage</button>
-						</li>
-					</ul>
-					<div class="documentation__content">
-						<div class="documentation__item">
-							<p class="small-title">cast</p>
-							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
-							<pre>
-								<code class="plaintext">
+				<div data-id="sanitizers-docs" data-group="documentation">
+					<div class="documentation__row">
+						<ul class="sidebar">
+							<li class="sidebar__item">
+								<button class="sidebar__button active">cast</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">castOr</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asString.js</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asNumber</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asInteger</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asBoolean</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asMatching</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asObject</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asArray</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asOptional</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asExactly</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asChecked</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asMapped</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asFlatMapped</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asAnyOf</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">withErrorMessage</button>
+							</li>
+						</ul>
+						<div class="documentation__content">
+							<div class="documentation__item">
+								<p class="small-title">cast</p>
+								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+								<pre>
+									<code class="plaintext">
 cast('123', asNumber) // 123
 cast('foo', asNumber) // TypeError
 cast('foo', asNumber, 'My custom message') // throws error with custom message
-								</code>
-							</pre>
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">castOr</p>
+								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+								<pre>
+									<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">asString.js</p>
+								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+								<pre>
+									<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">asString.js</p>
+								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+								<pre>
+									<code class="plaintext">
+cast('123', asNumber) // 123
+cast('foo', asNumber) // TypeError
+cast('foo', asNumber, 'My custom message') // throws error with custom message
+									</code>
+								</pre>
+							</div>
 						</div>
-						<div class="documentation__item">
-							<p class="small-title">castOr</p>
-							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
-							<pre>
-								<code class="plaintext">
-cast('123', asNumber) // 123
-cast('foo', asNumber) // TypeError
-cast('foo', asNumber, 'My custom message') // throws error with custom message
-								</code>
-							</pre>
+					</div>
+				</div>
+				<div class="hidden" data-id="ethereum-docs" data-group="documentation" >
+					<div class="documentation__row">
+						<ul class="sidebar">
+							<li class="sidebar__item">
+								<button class="sidebar__button active">asEthAddress</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asBigNumber</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asHexBytes</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">asTransactionHash</button>
+							</li>
+						</ul>
+						<div class="documentation__content">
+							<div class="documentation__item">
+								<p class="small-title">asEthAddress</p>
+								<p class="documentation__text">Accepts any string that represents a valid ethereum address. Checks the checksum if present. Returns a normalized representation.</p>
+								<pre>
+									<code class="plaintext">
+	asEthAddress('0xA5fE...f213', 'path') // Result.ok(0xA5fE...f213)
+	asEthAddress('0xa5fe...f213', 'path') // Result.ok(0xA5fE...f213)
+	asEthAddress('bla bla bla', 'path') // Result.error([{expected: 'ethereum address', path: 'path'}])
+	asEthAddress(123, 'path') // Result.error([{expected: 'ethereum address', path: 'path'}])
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">asBigNumber</p>
+								<p class="documentation__text">Accepts any string or number that represents an integer. Converts the integer to a BigNumber.</p>
+								<pre>
+									<code class="plaintext">
+	asBigNumber('123', 'path') // Result.ok(BigNumber(123))
+	asBigNumber(456, 'path') // Result.ok(BigNumber(456))
+	asBigNumber(1.5, 'path') // Result.error([{expected: 'big number', path: 'path'}])
+	asBigNumber(true, 'path') // Result.error([{expected: 'big number', path: 'path'}])									
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">asHexBytes</p>
+								<p class="documentation__text">Accepts any string that encodes binary data of specific length in hex format. The returned string is always lowercased.</p>
+								<pre>
+									<code class="plaintext">
+	sanitizer('0x12ab56', 'path') // Result.ok('0x12ab56')
+	sanitizer('0x12AB56', 'path') // Result.ok('0x12ab56')
+	sanitizer('0x12AB5', 'path') // Result.error([{expected: 'hex string representing 3 bytes', path: 'path'}])
+	sanitizer(1234, 'path') // Result.error([{expected: 'hex string representing 3 bytes', path: 'path'}])									
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">asTransactionHash</p>
+								<p class="documentation__text">Accepts any string that can be a transaction hash.</p>
+								<pre>
+									<code class="plaintext">
+	asTransactionHash(exampleHash, 'path') // Result.ok('0xd04b...40fa')
+	asTransactionHash(exampleHash.toUpperCase(), 'path') // Result.ok('0xd04b...40fa')
+	sanitizer('0x12AB5', 'path') // Result.error([{expected: 'transaction hash', path: 'path'}])
+	sanitizer(1234, 'path') // Result.error([{expected: 'transaction hash', path: 'path'}])									
+									</code>
+								</pre>
+							</div>
 						</div>
-						<div class="documentation__item">
-							<p class="small-title">asString.js</p>
-							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
-							<pre>
-								<code class="plaintext">
-cast('123', asNumber) // 123
-cast('foo', asNumber) // TypeError
-cast('foo', asNumber, 'My custom message') // throws error with custom message
-								</code>
-							</pre>
-						</div>
-						<div class="documentation__item">
-							<p class="small-title">asString.js</p>
-							<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
-							<pre>
-								<code class="plaintext">
-cast('123', asNumber) // 123
-cast('foo', asNumber) // TypeError
-cast('foo', asNumber, 'My custom message') // throws error with custom message
-								</code>
-							</pre>
+					</div>
+				</div>
+				<div class="hidden" data-id="express-docs" data-group="documentation">
+					<div class="documentation__row">
+						<ul class="sidebar">
+							<li class="sidebar__item">
+								<button class="sidebar__button active">asyncHandler</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">responseOf</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">responseOfBuffer</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">sanitize</button>
+							</li>
+							<li class="sidebar__item">
+								<button class="sidebar__button">SanitizeError</button>
+							</li>
+						</ul>
+						<div class="documentation__content">
+							<div class="documentation__item">
+								<p class="small-title">asyncHandler</p>
+								<p class="documentation__text">This function is essentially an async pipe. It takes a set of possibly async functions that are called with the return value of the previous function. It returns an express middleware that should be passed as a route handler to express.</p>
+								<!-- TODO: Add full copy -->
+								<pre>
+									<code class="plaintext">
+	import express from 'express'
+	import { asyncHandler, responseOf } from '@restless/restless'
+	
+	const app = express()
+	app.get('/:foo', asyncHandler(
+		(_, request) => request.params.foo,
+		(foo) => responseOf(`Param foo is: ${foo}`)
+	))									
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">responseOf</p>
+								<p class="documentation__text">Used to send json data:</p>
+								<pre>
+									<code class="plaintext">
+	responseOf({ foo: 'bar' }) // default 200 status
+	responseOf({ error: 'NOT_FOUND' }, 404) // custom status-code									
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">responseOfBuffer</p>
+								<p class="documentation__text">Used to send binary data from Buffer, use the first argument to specify data type:</p>
+								<pre>
+									<code class="plaintext">
+	responseOfBuffer('png', Buffer.from('ABC', 'ascii')) // default 200 status
+	responseOfBuffer('jpeg', Buffer.from('ABC', 'ascii'), 404) // custom status-code									
+									</code>
+								</pre>
+							</div>
+							<div class="documentation__item">
+								<p class="small-title">sanitize</p>
+								<p class="documentation__text">The sanitize function is a transformer. It transforms the request into an object that matches a schema you provide.</p>
+								<pre>
+									<code class="plaintext">
+	import express from 'express'
+	import { asyncHandler, responseOf, sanitize } from '@restless/restless'
+	import { asObject, asNumber } from '@restless/sanitizers'
+	
+	const app = express()
+	app.get('/:foo', asyncHandler(
+		sanitize({
+			foo: asNumber,
+			body: asObject({
+				bar: asNumber
+			}),
+			query: asObject({
+				baz: asNumber
+			})
+		})
+		(data) => responseOf(data)
+	))									
+									</code>
+								</pre>
+							</div>
 						</div>
 					</div>
 				</div>
