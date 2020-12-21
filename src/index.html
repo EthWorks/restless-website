@@ -160,65 +160,70 @@ npm install @restless/sanitizers
 		<section class="documentation">
 			<div class="container">
 				<h2 class="section-title">documentation</h2>
-				<div class="tabs tabs--center">
+				<div class="tabs tabs--center documentation__tabs">
 					<button class="js-tab-btn tabs__button active" data-name="documentation" data-target="sanitizers-docs">sanitizers</button>
 					<button class="js-tab-btn tabs__button" data-name="documentation" data-target="ethereum-docs">ethereum</button>
 					<button class="js-tab-btn tabs__button" data-name="documentation" data-target="express-docs">express.js</button>
 				</div>
 				<div data-id="sanitizers-docs" data-group="documentation">
-					<div class="documentation__row">
-						<ul class="sidebar">
-							<li class="sidebar__item">
-								<button class="sidebar__button active">cast</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">castOr</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asString.js</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asNumber</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asInteger</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asBoolean</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asMatching</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asObject</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asArray</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asOptional</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asExactly</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asChecked</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asMapped</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asFlatMapped</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asAnyOf</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">withErrorMessage</button>
-							</li>
-						</ul>
-						<div class="documentation__content">
-							<div class="documentation__item">
+					<div class="documentation__row js-documentation-row">
+						<div class="dropdown-wrapper js-dropdown-wrapper">
+							<div class="dropdown js-dropdown">
+								<button class="dropdown__btn js-dropdown-btn" hidden>cast</button>
+								<ul class="sidebar dropdown__content">
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button active" data-section="cast">cast</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="castOr">castOr</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asString">asString</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asNumber">asNumber</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asInteger">asInteger</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asBoolean">asBoolean</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asMatching">asMatching</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asObject">asObject</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asArray">asArray</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asOptional">asOptional</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asExactly">asExactly</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asChecked">asChecked</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asMapped">asMapped</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asFlatMapped">asFlatMapped</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asAnyOf">asAnyOf</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="withErrorMessage">withErrorMessage</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="documentation__content js-documentation-content" id="sanitizers-docs-content">
+							<div id="cast" class="documentation__item">
 								<p class="small-title">cast</p>
 								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
 								<pre>
@@ -229,36 +234,209 @@ cast('foo', asNumber, 'My custom message') // throws error with custom message
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="castOr" class="documentation__item">
 								<p class="small-title">castOr</p>
-								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or the default value. Also works when values have different types.</p>
 								<pre>
 									<code class="plaintext">
-cast('123', asNumber) // 123
-cast('foo', asNumber) // TypeError
-cast('foo', asNumber, 'My custom message') // throws error with custom message
+castOr('123', asNumber, null) // 123
+castOr('foo', asNumber, null) // null										
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
-								<p class="small-title">asString.js</p>
-								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+							<div id="asString" class="documentation__item">
+								<p class="small-title">asString</p>
+								<p class="documentation__text">Accepts any value that is a string. Returns a string.</p>
 								<pre>
 									<code class="plaintext">
-cast('123', asNumber) // 123
-cast('foo', asNumber) // TypeError
-cast('foo', asNumber, 'My custom message') // throws error with custom message
+asString('asd', 'path') // Result.ok('asd')
+asString(123, 'path') // Result.error([{expected: 'string', path: 'path'}])										
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
-								<p class="small-title">asString.js</p>
-								<p class="documentation__text">Accepts a value and applies a sanitizer to it resulting in returning the sanitized value or throwing a TypeError. The third optional parameter is the custom error message, with which cast will be thrown.</p>
+							<div id="asNumber" class="documentation__item">
+								<p class="small-title">asNumber</p>
+								<p class="documentation__text">Accepts any value that is a number or a string that represents a number. Returns a number.</p>
 								<pre>
 									<code class="plaintext">
-cast('123', asNumber) // 123
-cast('foo', asNumber) // TypeError
-cast('foo', asNumber, 'My custom message') // throws error with custom message
+asNumber(123, 'path') // Result.ok(123)
+asNumber('0.2', 'path') // Result.ok(0.2)
+asNumber('boo', 'path') // Result.error([{expected: 'number', path: 'path'}])
+asNumber({}, 'path') // Result.error([{expected: 'number', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asInteger" class="documentation__item">
+								<p class="small-title">asInteger</p>
+								<p class="documentation__text">Same as asNumber, but does not accept floating point values.</p>
+								<pre>
+									<code class="plaintext">
+asInteger('123', 'path') // Result.ok(123)
+asInteger(0.2, 'path') // Result.error([{expected: 'integer', path: 'path'}])
+asInteger('boo', 'path') // Result.error([{expected: 'integer', path: 'path'}])
+asInteger({}, 'path') // Result.error([{expected: 'integer', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asBoolean" class="documentation__item">
+								<p class="small-title">asBoolean</p>
+								<p class="documentation__text">Accepts any value that is a number or a string that represents a boolean ("true" or "false"). Returns a number.</p>
+								<pre>
+									<code class="plaintext">
+asBoolean(true, 'path') // Result.ok(true)
+asBoolean('false', 'path') // Result.ok(false)
+asBoolean('boo', 'path') // Result.error([{expected: 'boolean', path: 'path'}])
+asBoolean(123, 'path') // Result.error([{expected: 'boolean', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asMatching" class="documentation__item">
+								<p class="small-title">asMatching</p>
+								<p class="documentation__text">This higher-order sanitizer accepts values that are strings matching the regex provided as an argument. You can pass a custom message to it.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asMatching(/aaa/, 'custom message')
+
+sanitizer('aaa', 'path') // Result.ok('aaa')
+sanitizer(123, 'path') // Result.error([{expected: 'custom message', path: 'path'}])
+sanitizer('b', 'path') // Result.error([{expected: 'custom message', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asObject" class="documentation__item">
+								<p class="small-title">asObject</p>
+								<p class="documentation__text">This higher-order sanitizer requires a schema in the form of an object. Values of the schema are sanitizers used to sanitize the values of the input. Returns an object with keys and values matching the schema.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asObject({ foo: asNumber, bar: asString })
+
+sanitizer({ foo: 1, bar: 'a' }, 'path') // Result.ok({ foo: 1, bar: 'a' })
+sanitizer(123, 'path') // Result.error([{expected: 'object', path: 'path'}])
+sanitizer({}, 'path')
+// Result.error([
+//   {expected: 'number', path: 'path.foo'},
+//   {expected: 'string', path: 'path.bar'}
+// ])
+sanitizer({ foo: true, bar: 'a' , 'path') // Result.error([{expected: 'number', path: 'path.foo'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asArray" class="documentation__item">
+								<p class="small-title">asArray</p>
+								<p class="documentation__text">This higher-order sanitizer accepts any value that is an array of items that are sanitized through the sanitizer passed as argument.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asArray(asNumber)
+
+sanitizer([123, '45'], 'path') // Result.ok([123, 45])
+sanitizer(123, 'path') // Result.error([{expected: 'array', path: 'path'}])
+sanitizer([123, 'foo'], 'path') // Result.error([{expected: 'number', path: 'path[0]'}])
+									</code>
+								</pre>
+							</div>
+							<div id="asOptional" class="documentation__item">
+								<p class="small-title">asOptional</p>
+								<p class="documentation__text">This higher-order sanitizer accepts undefined or null or any value that is sanitized through the sanitizer passed as argument.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asOptional(asString)
+
+sanitizer('abcdef', 'path') // Result.ok('abcdef')
+sanitizer(null, 'path') // Result.ok(undefined)
+sanitizer(undefined, 'path') // Result.ok(undefined)
+sanitizer(123, 'path') // Result.error([{expected: 'string', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asExactly" class="documentation__item">
+								<p class="small-title">asExactly</p>
+								<p class="documentation__text">This higher-order sanitizer accepts only exactly the same values as the reference provided. Values are compared using the triple-equals operator (===). Works with strings, numbers, booleans, null, and undefined.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asExactly('foo')
+
+sanitizer('foo', 'path') // Result.ok('foo')
+sanitizer('bar', 'path') // Result.error([{expected: 'exactly "foo"', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asChecked" class="documentation__item">
+								<p class="small-title">asChecked</p>
+								<p class="documentation__text">This higher-order sanitizer accepts any value that is sanitized through the sanitizer passed as argument and satisfies the predicate passed as the second argument. A third argument that specifies an optional expected message can be provided.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asChecked(asString, x => x.length > 3)
+
+sanitizer('abcdef', 'path') // Result.ok('abcdef')
+sanitizer(123, 'path') // Result.error([{expected: 'string', path: 'path'}])
+sanitizer('a', 'path') // Result.error([{expected: 'custom logic', path: 'path'}])										
+									</code>
+								</pre>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asChecked(asString, x => x.length > 3, 'string longer than 3')
+sanitizer('a', 'path') // Result.error([{expected: 'string longer than 3', path: 'path'}])
+									</code>
+								</pre>
+								<p class="documentation__text">It also works with type guards in the same way as Array.filter:</p>
+								<pre>
+									<code class="plaintext">
+const asFoo: Sanitizer<'foo'> = asChecked(asString, (x): x is 'foo' => x === 'foo')
+									</code>
+								</pre>
+							</div>
+							<div id="asMapped" class="documentation__item">
+								<p class="small-title">asMapped</p>
+								<p class="documentation__text">This higher-order sanitizer accepts any value that is sanitized through the sanitizer passed as argument. That value is then transformed using the provided function.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asMapped(asNumber, x => x > 1)
+
+sanitizer(123, 'path') // Result.ok(true)
+sanitizer(0, 'path') // Result.ok(false)
+sanitizer('a', 'path') // Result.error([{expected: 'number', path: 'path'}])										
+									</code>
+								</pre>
+							</div>
+							<div id="asFlatMapped" class="documentation__item">
+								<p class="small-title">asFlatMapped</p>
+								<p class="documentation__text">This higher-order sanitizer accepts any value that is sanitized through the sanitizer passed as argument. That value is then transformed using the provided function that can return Result a new value or an error.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asFlatMapped(asNumber, (value, path) => x > 1
+	? Result.ok(value)
+	: Result.error([{ path, expected: 'number > 1' }])
+)
+
+sanitizer(123, 'path') // Result.ok(123)
+sanitizer(0, 'path') // Result.error([{expected: 'number > 1', path: 'path'}])
+sanitizer('a', 'path') // Result.error([{expected: 'number', path: 'path'}])									
+									</code>
+								</pre>
+							</div>
+							<div id="asAnyOf" class="documentation__item">
+								<p class="small-title">asAnyOf</p>
+								<p class="documentation__text">This higher-order sanitizer accepts any value that is successfully sanitized through any of the sanitizers passed as an array argument. In case of multiple passing sanitizers, first one is used. A second argument specifies expected message.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = asAnyOf([asNumber, asString], 'a string or a number')
+
+sanitizer('abcdef', 'path') // Result.ok('abcdef')
+sanitizer('123', 'path') // Result.ok(123)
+sanitizer(123, 'path') // Result.ok(123)
+sanitizer({}, 'path') // Result.error([{expected: 'a string or a number', path: 'path'}])
+									</code>
+								</pre>
+							</div>
+							<div id="withErrorMessage" class="documentation__item">
+								<p class="small-title">withErrorMessage</p>
+								<p class="documentation__text">This higher-order sanitizer will act just like the sanitizer passed as an argument, but will change the error value to contain a different expected message.</p>
+								<pre>
+									<code class="plaintext">
+const sanitizer = withErrorMessage(asString, 'bla bla')
+
+sanitizer('abcdef', 'path') // Result.ok('abcdef')
+sanitizer(123, 'path') // Result.error([{expected: 'bla bla', path: 'path'}])										
 									</code>
 								</pre>
 							</div>
@@ -266,67 +444,72 @@ cast('foo', asNumber, 'My custom message') // throws error with custom message
 					</div>
 				</div>
 				<div class="hidden" data-id="ethereum-docs" data-group="documentation" >
-					<div class="documentation__row">
-						<ul class="sidebar">
-							<li class="sidebar__item">
-								<button class="sidebar__button active">asEthAddress</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asBigNumber</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asHexBytes</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">asTransactionHash</button>
-							</li>
-						</ul>
-						<div class="documentation__content">
-							<div class="documentation__item">
+					<div class="documentation__row js-documentation-row">
+						<div class="dropdown-wrapper js-dropdown-wrapper">
+							<div class="dropdown js-dropdown">
+								<button class="dropdown__btn js-dropdown-btn" hidden>asEthAddress</button>
+								<ul class="sidebar dropdown__content">
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button active" data-section="asEthAddress">asEthAddress</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asBigNumber">asBigNumber</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asHexBytes">asHexBytes</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="asTransactionHash">asTransactionHash</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="documentation__content js-documentation-content" id="ethereum-docs-content">
+							<div id="asEthAddress" class="documentation__item">
 								<p class="small-title">asEthAddress</p>
 								<p class="documentation__text">Accepts any string that represents a valid ethereum address. Checks the checksum if present. Returns a normalized representation.</p>
 								<pre>
 									<code class="plaintext">
-	asEthAddress('0xA5fE...f213', 'path') // Result.ok(0xA5fE...f213)
-	asEthAddress('0xa5fe...f213', 'path') // Result.ok(0xA5fE...f213)
-	asEthAddress('bla bla bla', 'path') // Result.error([{expected: 'ethereum address', path: 'path'}])
-	asEthAddress(123, 'path') // Result.error([{expected: 'ethereum address', path: 'path'}])
+asEthAddress('0xA5fE...f213', 'path') // Result.ok(0xA5fE...f213)
+asEthAddress('0xa5fe...f213', 'path') // Result.ok(0xA5fE...f213)
+asEthAddress('bla bla bla', 'path') // Result.error([{expected: 'ethereum address', path: 'path'}])
+asEthAddress(123, 'path') // Result.error([{expected: 'ethereum address', path: 'path'}])
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="asBigNumber" class="documentation__item">
 								<p class="small-title">asBigNumber</p>
 								<p class="documentation__text">Accepts any string or number that represents an integer. Converts the integer to a BigNumber.</p>
 								<pre>
 									<code class="plaintext">
-	asBigNumber('123', 'path') // Result.ok(BigNumber(123))
-	asBigNumber(456, 'path') // Result.ok(BigNumber(456))
-	asBigNumber(1.5, 'path') // Result.error([{expected: 'big number', path: 'path'}])
-	asBigNumber(true, 'path') // Result.error([{expected: 'big number', path: 'path'}])									
+asBigNumber('123', 'path') // Result.ok(BigNumber(123))
+asBigNumber(456, 'path') // Result.ok(BigNumber(456))
+asBigNumber(1.5, 'path') // Result.error([{expected: 'big number', path: 'path'}])
+asBigNumber(true, 'path') // Result.error([{expected: 'big number', path: 'path'}])									
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="asHexBytes" class="documentation__item">
 								<p class="small-title">asHexBytes</p>
 								<p class="documentation__text">Accepts any string that encodes binary data of specific length in hex format. The returned string is always lowercased.</p>
 								<pre>
 									<code class="plaintext">
-	sanitizer('0x12ab56', 'path') // Result.ok('0x12ab56')
-	sanitizer('0x12AB56', 'path') // Result.ok('0x12ab56')
-	sanitizer('0x12AB5', 'path') // Result.error([{expected: 'hex string representing 3 bytes', path: 'path'}])
-	sanitizer(1234, 'path') // Result.error([{expected: 'hex string representing 3 bytes', path: 'path'}])									
+sanitizer('0x12ab56', 'path') // Result.ok('0x12ab56')
+sanitizer('0x12AB56', 'path') // Result.ok('0x12ab56')
+sanitizer('0x12AB5', 'path') // Result.error([{expected: 'hex string representing 3 bytes', path: 'path'}])
+sanitizer(1234, 'path') // Result.error([{expected: 'hex string representing 3 bytes', path: 'path'}])									
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="asTransactionHash" class="documentation__item">
 								<p class="small-title">asTransactionHash</p>
 								<p class="documentation__text">Accepts any string that can be a transaction hash.</p>
 								<pre>
 									<code class="plaintext">
-	asTransactionHash(exampleHash, 'path') // Result.ok('0xd04b...40fa')
-	asTransactionHash(exampleHash.toUpperCase(), 'path') // Result.ok('0xd04b...40fa')
-	sanitizer('0x12AB5', 'path') // Result.error([{expected: 'transaction hash', path: 'path'}])
-	sanitizer(1234, 'path') // Result.error([{expected: 'transaction hash', path: 'path'}])									
+asTransactionHash(exampleHash, 'path') // Result.ok('0xd04b...40fa')
+asTransactionHash(exampleHash.toUpperCase(), 'path') // Result.ok('0xd04b...40fa')
+sanitizer('0x12AB5', 'path') // Result.error([{expected: 'transaction hash', path: 'path'}])
+sanitizer(1234, 'path') // Result.error([{expected: 'transaction hash', path: 'path'}])									
 									</code>
 								</pre>
 							</div>
@@ -334,86 +517,95 @@ cast('foo', asNumber, 'My custom message') // throws error with custom message
 					</div>
 				</div>
 				<div class="hidden" data-id="express-docs" data-group="documentation">
-					<div class="documentation__row">
-						<ul class="sidebar">
-							<li class="sidebar__item">
-								<button class="sidebar__button active">asyncHandler</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">responseOf</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">responseOfBuffer</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">sanitize</button>
-							</li>
-							<li class="sidebar__item">
-								<button class="sidebar__button">SanitizeError</button>
-							</li>
-						</ul>
-						<div class="documentation__content">
-							<div class="documentation__item">
+					<div class="documentation__row js-documentation-row">
+						<div class="dropdown-wrapper js-dropdown-wrapper">
+							<div class="dropdown js-dropdown">
+								<button class="dropdown__btn js-dropdown-btn" hidden>asyncHandler</button>
+								<ul class="sidebar dropdown__content">
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button active" data-section="asyncHandler">asyncHandler</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="responseOf">responseOf</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="responseOfBuffer">responseOfBuffer</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="sanitize">sanitize</button>
+									</li>
+									<li class="sidebar__item">
+										<button class="sidebar__button js-sidebar-button" data-section="SanitizeError">SanitizeError</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="documentation__content js-documentation-content" id="express-docs-content">
+							<div id="asyncHandler" class="documentation__item">
 								<p class="small-title">asyncHandler</p>
 								<p class="documentation__text">This function is essentially an async pipe. It takes a set of possibly async functions that are called with the return value of the previous function. It returns an express middleware that should be passed as a route handler to express.</p>
 								<!-- TODO: Add full copy -->
 								<pre>
 									<code class="plaintext">
-	import express from 'express'
-	import { asyncHandler, responseOf } from '@restless/restless'
-	
-	const app = express()
-	app.get('/:foo', asyncHandler(
-		(_, request) => request.params.foo,
-		(foo) => responseOf(`Param foo is: ${foo}`)
-	))									
+import express from 'express'
+import { asyncHandler, responseOf } from '@restless/restless'
+
+const app = express()
+app.get('/:foo', asyncHandler(
+	(_, request) => request.params.foo,
+	(foo) => responseOf(`Param foo is: ${foo}`)
+))									
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="responseOf" class="documentation__item">
 								<p class="small-title">responseOf</p>
 								<p class="documentation__text">Used to send json data:</p>
 								<pre>
 									<code class="plaintext">
-	responseOf({ foo: 'bar' }) // default 200 status
-	responseOf({ error: 'NOT_FOUND' }, 404) // custom status-code									
+responseOf({ foo: 'bar' }) // default 200 status
+responseOf({ error: 'NOT_FOUND' }, 404) // custom status-code
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="responseOfBuffer" class="documentation__item">
 								<p class="small-title">responseOfBuffer</p>
 								<p class="documentation__text">Used to send binary data from Buffer, use the first argument to specify data type:</p>
 								<pre>
 									<code class="plaintext">
-	responseOfBuffer('png', Buffer.from('ABC', 'ascii')) // default 200 status
-	responseOfBuffer('jpeg', Buffer.from('ABC', 'ascii'), 404) // custom status-code									
+responseOfBuffer('png', Buffer.from('ABC', 'ascii')) // default 200 status
+responseOfBuffer('jpeg', Buffer.from('ABC', 'ascii'), 404) // custom status-code
 									</code>
 								</pre>
 							</div>
-							<div class="documentation__item">
+							<div id="sanitize" class="documentation__item">
 								<p class="small-title">sanitize</p>
 								<p class="documentation__text">The sanitize function is a transformer. It transforms the request into an object that matches a schema you provide.</p>
 								<pre>
 									<code class="plaintext">
-	import express from 'express'
-	import { asyncHandler, responseOf, sanitize } from '@restless/restless'
-	import { asObject, asNumber } from '@restless/sanitizers'
-	
-	const app = express()
-	app.get('/:foo', asyncHandler(
-		sanitize({
-			foo: asNumber,
-			body: asObject({
-				bar: asNumber
-			}),
-			query: asObject({
-				baz: asNumber
-			})
+import express from 'express'
+import { asyncHandler, responseOf, sanitize } from '@restless/restless'
+import { asObject, asNumber } from '@restless/sanitizers'
+
+const app = express()
+app.get('/:foo', asyncHandler(
+	sanitize({
+		foo: asNumber,
+		body: asObject({
+			bar: asNumber
+		}),
+		query: asObject({
+			baz: asNumber
 		})
-		(data) => responseOf(data)
-	))									
+	})
+	(data) => responseOf(data)
+))									
 									</code>
 								</pre>
+							</div>
+							<div id="SanitizeError" class="documentation__item">
+								<p class="small-title">SanitizeError</p>
+								<p class="documentation__text">This is the error that is thrown when sanitize function receives data that does not match the schema.</p>
 							</div>
 						</div>
 					</div>
@@ -425,8 +617,10 @@ cast('foo', asNumber, 'My custom message') // throws error with custom message
 		<div class="container">
 			<div class="footer__row">
 				<p class="footer__text">Copyrights 2020.</p>
-				<img src="./img/restless-logo.svg" alt="restless logo">
-				<img src="./img/github-logo.svg" alt="github logo">
+				<img src="./img/restless-logo.svg" alt="restless logo" class="footer__logo">
+				<div class="footer__social">
+					<img src="./img/github-logo.svg" alt="github logo" class="footer__social-img">
+				</div>
 			</div>
 		</div>
 	</footer>
@@ -434,6 +628,7 @@ cast('foo', asNumber, 'My custom message') // throws error with custom message
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/monokai-sublime.min.css">
 	<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
-	<script src="./js/main.js"></script>
+	<script src="./js/tabs.js"></script>
+	<script src="./js/documentation.js"></script>
 </body>
 </html>

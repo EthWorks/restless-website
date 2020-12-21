@@ -6,6 +6,9 @@
 
   +media(m, 90px)
     padding: 136px 0 630px
+
+  +media(s)
+    padding: 56px 0 317px
   
 .installation::before
   content: ''
@@ -16,6 +19,9 @@
   width: 100%
   background: url('../img/installation-bg.svg') center no-repeat
   background-size: cover
+
+  +media(s)
+    height: 317px
 
 .installation::after
   content: ''
@@ -30,6 +36,11 @@
   +media(m, 90px)
     right: auto
     left: 121px
+
+  +media(s)
+    bottom: 0
+    left: 32px
+    width: 548px
 
 .installation__title
   color: #fff
@@ -58,6 +69,10 @@
   font-weight: bold
   font-size: 32px
   line-height: 42px
+
+  +media(s)
+    font-size: 16px
+    line-height: 21px
 
 .tabs__button--light
   color: #E0E0E0
