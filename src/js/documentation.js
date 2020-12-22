@@ -33,7 +33,7 @@ function onSidebarLinkClick(tab) {
     if(isDesktop) content.scrollTop = sectionTop - contentTop
     else {
       section.scrollIntoView()
-      window.scrollTo({top: section.offsetTop - 97, behavior: 'smooth'})
+      window.scrollTo({top: section.offsetTop - dropdownWrapper.clientHeight, behavior: 'smooth'})
     }
   }
   

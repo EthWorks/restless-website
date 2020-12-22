@@ -468,6 +468,10 @@ code.hljs {
   font-size: 24px;
   line-height: 31px;
   color: #212121; }
+  @media (max-width: 600px) {
+    .sidebar__button {
+      font-size: 16px;
+      line-height: 21px; } }
 
 .sidebar__button.active {
   position: relative;
@@ -475,8 +479,6 @@ code.hljs {
   @media (max-width: 900px) {
     .sidebar__button.active {
       font-weight: bold;
-      font-size: 24px;
-      line-height: 31px;
       color: #CB000C; } }
 
 .sidebar__button.active::before {
@@ -529,6 +531,10 @@ code.hljs {
     position: relative;
     height: 97px; } }
 
+@media (max-width: 600px) {
+  .dropdown-section {
+    height: 82px; } }
+
 .dropdown-wrapper {
   height: 100%; }
   @media (max-width: 900px) {
@@ -539,6 +545,9 @@ code.hljs {
       padding: 16px 0;
       height: 97px;
       width: 100%; } }
+  @media (max-width: 600px) {
+    .dropdown-wrapper {
+      height: 82px; } }
 
 @media (max-width: 900px) {
   .dropdown-wrapper.fixed {
@@ -563,6 +572,12 @@ code.hljs {
     border: 1px solid #000000;
     -webkit-border-radius: 4px;
             border-radius: 4px; } }
+
+@media (max-width: 600px) {
+  .dropdown__btn {
+    padding: 13.5px 18px 13.5px 16px;
+    font-size: 16px;
+    line-height: 21px; } }
 
 .dropdown__btn::after {
   content: '';
