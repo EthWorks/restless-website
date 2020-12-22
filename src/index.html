@@ -167,59 +167,61 @@ npm install @restless/sanitizers
 				</div>
 				<div data-id="sanitizers-docs" data-group="documentation">
 					<div class="documentation__row js-documentation-row">
-						<div class="dropdown-wrapper js-dropdown-wrapper">
-							<div class="dropdown js-dropdown">
-								<button class="dropdown__btn js-dropdown-btn" hidden>cast</button>
-								<ul class="sidebar dropdown__content">
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button active" data-section="cast">cast</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="castOr">castOr</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asString">asString</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asNumber">asNumber</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asInteger">asInteger</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asBoolean">asBoolean</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asMatching">asMatching</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asObject">asObject</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asArray">asArray</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asOptional">asOptional</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asExactly">asExactly</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asChecked">asChecked</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asMapped">asMapped</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asFlatMapped">asFlatMapped</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asAnyOf">asAnyOf</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="withErrorMessage">withErrorMessage</button>
-									</li>
-								</ul>
+						<div class="dropdown-section">
+							<div class="dropdown-wrapper js-dropdown-wrapper">
+								<div class="dropdown js-dropdown">
+									<button class="dropdown__btn js-dropdown-btn" hidden>cast</button>
+									<ul class="sidebar dropdown__content">
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button active" data-section="cast">cast</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="castOr">castOr</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asString">asString</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asNumber">asNumber</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asInteger">asInteger</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asBoolean">asBoolean</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asMatching">asMatching</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asObject">asObject</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asArray">asArray</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asOptional">asOptional</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asExactly">asExactly</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asChecked">asChecked</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asMapped">asMapped</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asFlatMapped">asFlatMapped</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asAnyOf">asAnyOf</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="withErrorMessage">withErrorMessage</button>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div class="documentation__content js-documentation-content" id="sanitizers-docs-content">
@@ -445,23 +447,25 @@ sanitizer(123, 'path') // Result.error([{expected: 'bla bla', path: 'path'}])
 				</div>
 				<div class="hidden" data-id="ethereum-docs" data-group="documentation" >
 					<div class="documentation__row js-documentation-row">
-						<div class="dropdown-wrapper js-dropdown-wrapper">
-							<div class="dropdown js-dropdown">
-								<button class="dropdown__btn js-dropdown-btn" hidden>asEthAddress</button>
-								<ul class="sidebar dropdown__content">
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button active" data-section="asEthAddress">asEthAddress</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asBigNumber">asBigNumber</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asHexBytes">asHexBytes</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="asTransactionHash">asTransactionHash</button>
-									</li>
-								</ul>
+						<div class="dropdown-section">
+							<div class="dropdown-wrapper js-dropdown-wrapper">
+								<div class="dropdown js-dropdown">
+									<button class="dropdown__btn js-dropdown-btn" hidden>asEthAddress</button>
+									<ul class="sidebar dropdown__content">
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button active" data-section="asEthAddress">asEthAddress</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asBigNumber">asBigNumber</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asHexBytes">asHexBytes</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="asTransactionHash">asTransactionHash</button>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div class="documentation__content js-documentation-content" id="ethereum-docs-content">
@@ -518,26 +522,28 @@ sanitizer(1234, 'path') // Result.error([{expected: 'transaction hash', path: 'p
 				</div>
 				<div class="hidden" data-id="express-docs" data-group="documentation">
 					<div class="documentation__row js-documentation-row">
-						<div class="dropdown-wrapper js-dropdown-wrapper">
-							<div class="dropdown js-dropdown">
-								<button class="dropdown__btn js-dropdown-btn" hidden>asyncHandler</button>
-								<ul class="sidebar dropdown__content">
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button active" data-section="asyncHandler">asyncHandler</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="responseOf">responseOf</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="responseOfBuffer">responseOfBuffer</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="sanitize">sanitize</button>
-									</li>
-									<li class="sidebar__item">
-										<button class="sidebar__button js-sidebar-button" data-section="SanitizeError">SanitizeError</button>
-									</li>
-								</ul>
+						<div class="dropdown-section">
+							<div class="dropdown-wrapper js-dropdown-wrapper">
+								<div class="dropdown js-dropdown">
+									<button class="dropdown__btn js-dropdown-btn" hidden>asyncHandler</button>
+									<ul class="sidebar dropdown__content">
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button active" data-section="asyncHandler">asyncHandler</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="responseOf">responseOf</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="responseOfBuffer">responseOfBuffer</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="sanitize">sanitize</button>
+										</li>
+										<li class="sidebar__item">
+											<button class="sidebar__button js-sidebar-button" data-section="SanitizeError">SanitizeError</button>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div class="documentation__content js-documentation-content" id="express-docs-content">

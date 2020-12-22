@@ -525,9 +525,20 @@ code.hljs {
       position: relative; } }
 
 @media (max-width: 900px) {
-  .dropdown-wrapper {
-    padding: 16px 0;
-    width: 100%; } }
+  .dropdown-section {
+    position: relative;
+    height: 97px; } }
+
+.dropdown-wrapper {
+  height: 100%; }
+  @media (max-width: 900px) {
+    .dropdown-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 16px 0;
+      height: 97px;
+      width: 100%; } }
 
 @media (max-width: 900px) {
   .dropdown-wrapper.fixed {

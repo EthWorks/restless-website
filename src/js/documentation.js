@@ -6,20 +6,16 @@ function onSidebarLinkClick(tab) {
   var dropdown = container.querySelector('.js-dropdown')
   var dropdownButton = container.querySelector('.js-dropdown-btn')
   var documentationRow = container.querySelector('.js-documentation-row')
-  var tabButtonList = container.querySelectorAll('.js-tab-btn')
   var documentationRowTop
   var isDesktop
   
   function stickyNavigation() {
     documentationRowTop = documentationRow.offsetTop
-    console.log('window.scrollY', window.scrollY)
-    console.log('documentationRowTop',documentationRowTop)
+      
     if (window.scrollY >= documentationRowTop) {
       dropdownWrapper.classList.add('fixed')
-      documentationRow.style.paddingTop = '97px'
     } else {
       dropdownWrapper.classList.remove('fixed')
-      documentationRow.style.paddingTop = 0
     }
 
   }
@@ -76,3 +72,17 @@ function onSidebarLinkClick(tab) {
 onSidebarLinkClick('sanitizers-docs')
 onSidebarLinkClick('ethereum-docs')
 onSidebarLinkClick('express-docs')
+
+function staticDocsDropdown() {
+  var dropdownWrappersList = document.querySelectorAll('.js-dropdown-wrapper')
+  var tabs = document.querySelectorAll('[data-name="documentation"]')
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      dropdownWrappersList.forEach(function(dropdown) {
+        dropdown.classList.remove('fixed')
+      })
+    })
+  })
+}
+staticDocsDropdown()
